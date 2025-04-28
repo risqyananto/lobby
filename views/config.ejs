@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan Website</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <div class="container mx-auto py-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Pengaturan Website</h1>
+    
+    <form action="/config" method="POST" class="max-w-lg mx-auto bg-white p-8 rounded shadow">
+      <div class="mb-4">
+        <label class="block mb-2 font-bold">Title Website</label>
+        <input type="text" name="title" class="input input-bordered w-full" value="<%= title %>">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 font-bold">Tagline</label>
+        <input type="text" name="tagline" class="input input-bordered w-full" value="<%= tagline %>">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 font-bold">Link Website</label>
+        <input type="text" name="websiteLink" class="input input-bordered w-full" value="<%= websiteLink %>">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 font-bold">Link Aplikasi</label>
+        <input type="text" name="appLink" class="input input-bordered w-full" value="<%= appLink %>">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 font-bold">Link Anime</label>
+        <input type="text" name="animeLink" class="input input-bordered w-full" value="<%= animeLink %>">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 font-bold">Logo URL</label>
+        <input type="text" name="logo" class="input input-bordered w-full" value="<%= logo %>">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 font-bold">Background Image URL</label>
+        <input type="text" name="backgroundImage" class="input input-bordered w-full" value="<%= backgroundImage %>">
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

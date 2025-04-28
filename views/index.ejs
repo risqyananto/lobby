@@ -2,20 +2,52 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
   <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-  <header>
-    <h1><%= title %></h1>
-  </header>
-  <main>
-    <p><%= message %></p>
-    DONTOL
-  </main>
-  <footer>
-    <p>&copy; 2025 Risqy Ananto. All Rights Reserved.</p>
-  </footer>
+  <div id="root">
+    <div class="h-screen flex flex-col">
+      <main class="flex-grow flex justify-center items-center">
+        <div class="hero h-full w-full bg-cover bg-center bg-no-repeat" style="background-image: url('<%= backgroundImage %>');">
+          <div class="hero-overlay bg-opacity-50"></div>
+          <div class="hero-content text-center">
+            <div class="max-w-md">
+              <div>
+                <img src="<%= logo %>" alt="Logo" class="mx-auto" width="600" height="262">
+                <div class="divider divider-primary mt-3 mb-10">
+                  <p class="text-lg font-bold text-gray-100"><%= tagline %></p>
+                </div>
+                <p class="text-2xl font-bold text-gray-100">Mulai Baca Melalui</p>
+
+                <div class="flex w-full mt-4">
+                  <div class="card rounded-box grid h-full flex-grow place-items-center">
+                    <a href="<%= websiteLink %>" class="btn btn-secondary btn-block">Website</a>
+                  </div>
+                  <div class="divider divider-horizontal"></div>
+                  <div class="card rounded-box grid h-full flex-grow place-items-center">
+                    <a href="<%= appLink %>" class="btn btn-accent btn-block">Aplikasi</a>
+                  </div>
+                </div>
+
+                <div class="divider"></div>
+                <div class="card rounded-box grid h-full flex-grow place-items-center">
+                  <a href="<%= animeLink %>" class="btn btn-primary btn-block">Nonton Anime</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer footer-center bg-gray-800 text-white p-2 text-center bg-opacity-50">
+        <aside>
+          <p class="font-semibold p-2">&copy; <%= new Date().getFullYear() %> <%= title %></p>
+        </aside>
+      </footer>
+    </div>
+  </div>
 </body>
 </html>

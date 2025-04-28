@@ -1,21 +1,61 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Set view engine to EJS
+// Simpan data website di memori (sementara, belum pakai database)
+let websiteData = {
+  title: "[Kosongan]",
+  tagline: "[Kosongan Tagline]",
+  websiteLink: "#",
+  appLink: "#",
+  animeLink: "#",
+  logo: "/assets/logo.avif", // Ganti sesuai lokasi file kamu
+  backgroundImage: "/assets/background.avif" // Ganti juga
+};
+
+// Setup view engine ke EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Serve static files from 'public' directory
+// Untuk membaca data POST dari form
+app.use(express.urlencoded({ extended: true }));
+
+// Setup folder static
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Define route for homepage
+// Route Home (index)
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Portofolio Saya', message: 'Selamat datang di portofolio saya!' });
+  res.render('index', websiteData);
 });
 
-// Set port
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Route Config Page (Form pengaturan)
+app.get('/config', (req, res) => {
+  res.render('config', websiteData);
+});
+
+// Route untuk menerima form POST dari /config
+app.post('/config', (req, res) => {
+  const { title, tagline, websiteLink, appLink, animeLink, logo, backgroundImage } = req.body;
+
+  // Update data website
+  websiteData = {
+    title,
+    tagline,
+    websiteLink,
+    appLink,
+    animeLink,
+    logo,
+    backgroundImage
+  };
+
+  console.log('Website data updated:', websiteData);
+
+  // Setelah update, redirect ke halaman utama
+  res.redirect('/');
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
