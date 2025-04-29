@@ -29,32 +29,6 @@ app.get('/', (req, res) => {
   res.render('index', websiteData);
 });
 
-// Route Config Page (Form pengaturan)
-app.get('/config', (req, res) => {
-  res.render('config', websiteData);
-});
-
-// Route untuk menerima form POST dari /config
-app.post('/config', (req, res) => {
-  const { title, tagline, websiteLink, appLink, animeLink, logo, backgroundImage } = req.body;
-
-  // Update data website
-  websiteData = {
-    title,
-    tagline,
-    websiteLink,
-    appLink,
-    animeLink,
-    logo,
-    backgroundImage
-  };
-
-  console.log('Website data updated:', websiteData);
-
-  // Setelah update, redirect ke halaman utama
-  res.redirect('/');
-});
-
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
